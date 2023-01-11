@@ -1,35 +1,41 @@
-import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
-import { Box, useMediaQuery } from '@mui/material';
-import Navbar from '../../components/Navbar';
-import Sidebar from '../../components/Sidebar';
+import React, { useState, } from "react";
+import { Outlet, } from "react-router-dom";
+import { Box, useMediaQuery, } from "@mui/material";
+import { useSelector, } from "react-redux";
+import Navbar from "../../components/Navbar";
+import Sidebar from "../../components/Sidebar";
+import { useGetUserByIdQuery, } from "../../state/api";
 
-const Layout = () => {
-    const isNonMobile = useMediaQuery('(min-width: 600px)');
-    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+function Layout() {
+  const isNonMobile = useMediaQuery("(min-width: 600px)",);
+  const [isSidebarOpen, setIsSidebarOpen,] = useState(true,);
+  const userId = useSelector((state,) => state.global.userId,);
+  const { data, } = useGetUserByIdQuery(userId,);
 
-    return (
-        <Box
-            display={isNonMobile ? "flex" : "block"}
-            width={"100%"}
-            height={"100%"}
-        >
-            <Sidebar
-                isSidebarOpen={isSidebarOpen}
-                setIsSidebarOpen={setIsSidebarOpen}
-                isNonMobile={isNonMobile}
-                drawerWidth="250px"
-            />
+  return (
+    <Box
+      display={isNonMobile ? "flex" : "block"}
+      width="100%"
+      height="100%"
+    >
+      <Sidebar
+        user={data || {}}
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
+        isNonMobile={isNonMobile}
+        drawerWidth="250px"
+      />
 
-            <Box>
-                <Navbar
-                    isSidebarOpen={isSidebarOpen}
-                    setIsSidebarOpen={setIsSidebarOpen}
-                />
-                <Outlet />
-            </Box>
-        </Box>
-    )
+      <Box flexGrow={1}>
+        <Navbar
+          user={data}
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
+        />
+        <Outlet />
+      </Box>
+    </Box>
+  );
 }
 
-export default Layout
+export default Layout;
