@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import express from "express";
 import mongoose from "mongoose";
 import morgan from "morgan";
@@ -9,6 +10,11 @@ import clientRoutes from "./routes/client.js";
 import salesRoutes from "./routes/sales.js";
 import managementRoutes from "./routes/management.js";
 import generalRoutes from "./routes/general.js";
+
+/* MongoDB DATA MOCK Imports */
+// import Product from "./models/Product.js";
+// import ProductStat from "./models/ProductStat.js";
+// import { dataProduct, dataProductStat } from "./data/index.js";
 // import User from "./models/User.js";
 // import { dataUser } from "./data/index.js";
 
@@ -39,7 +45,11 @@ mongoose.connect(process.env.MONGO_URL, {
   useUnifiedTopology: true,
 }).then(() => {
   app.listen(PORT, () => console.log(`Server running on PORT: ${PORT}`));
-//   User.insertMany(dataUser);
+
+  /* Inserting data in MongoDB */
+  // Product.insertMany(dataProduct);
+  // ProductStat.insertMany(dataProductStat);
+  //   User.insertMany(dataUser);
 }).catch((error) => {
   console.log(error);
 });
