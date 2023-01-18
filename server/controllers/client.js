@@ -2,8 +2,9 @@
 /* eslint-disable no-console */
 import Product from "../models/Product.js";
 import ProductStat from "../models/ProductStat.js";
+import User from "../models/User.js";
 
-const getProducts = async (req, res) => {
+export const getProducts = async (req, res) => {
   try {
     const products = await Product.find();
 
@@ -19,6 +20,16 @@ const getProducts = async (req, res) => {
     );
 
     return res.status(200).json(productsWithStats);
+  } catch (error) {
+    console.log(error);
+    return res.status(404).json({ message: error.message });
+  }
+};
+
+export const getCustomers = async (req, res) => {
+  try {
+    const customers = await User.find({ role: "user" }).select("-password");
+    return res.status(200).json(customers);
   } catch (error) {
     console.log(error);
     return res.status(404).json({ message: error.message });

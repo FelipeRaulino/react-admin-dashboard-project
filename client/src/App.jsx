@@ -8,6 +8,7 @@ import { useSelector, } from "react-redux";
 import Products from "./scenes/products";
 import Dashboard from "./scenes/dashboard";
 import Layout from "./scenes/layout";
+import Customers from "./scenes/customers";
 import { themeSettings, } from "./themes";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/products" element={<Products />} />
+              <Route path="/customers" element={<Customers />} />
             </Route>
           </Routes>
         </ThemeProvider>
