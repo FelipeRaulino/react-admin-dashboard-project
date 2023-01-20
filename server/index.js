@@ -13,10 +13,13 @@ import generalRoutes from "./routes/general.js";
 
 /* MongoDB DATA MOCK Imports */
 // import Product from "./models/Product.js";
+// import { dataProduct } from "./data/index.js";
 // import ProductStat from "./models/ProductStat.js";
-// import { dataProduct, dataProductStat } from "./data/index.js";
+// import { dataProductStat } from "./data/index.js";
 // import User from "./models/User.js";
 // import { dataUser } from "./data/index.js";
+// import Transaction from "./models/Transaction.js";
+// import { dataTransaction } from "./data/index.js";
 
 /* CONFIGURATION */
 dotenv.config();
@@ -49,7 +52,8 @@ mongoose.connect(process.env.MONGO_URL, {
   /* Inserting data in MongoDB */
   // Product.insertMany(dataProduct);
   // ProductStat.insertMany(dataProductStat);
-  //   User.insertMany(dataUser);
+  // User.insertMany(dataUser);
+  // Transaction.insertMany(dataTransaction);
 }).catch((error) => {
   console.log(error);
 });
