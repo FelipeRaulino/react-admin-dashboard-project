@@ -1,24 +1,24 @@
-import React, { useState, } from "react";
+import React, { useState } from "react";
 import {
   AppBar, Box, IconButton, Toolbar, InputBase, Button, Typography, MenuItem, Menu,
 } from "@mui/material";
 import {
   Search, Menu as MenuIcon, DarkModeOutlined, LightOutlined, SettingsOutlined, ArrowDropDown,
 } from "@mui/icons-material";
-import { useTheme, } from "@mui/material/styles";
-import { useDispatch, } from "react-redux";
+import { useTheme } from "@mui/material/styles";
+import { useDispatch } from "react-redux";
 import FlexBetween from "./FlexBetween";
-import { setMode, } from "../state";
+import { setMode } from "../state";
 import ProfileImage from "../assets/profile.jpeg";
 
-function Navbar({ user, isSidebarOpen, setIsSidebarOpen, },) {
+function Navbar({ user, isSidebarOpen, setIsSidebarOpen }) {
   const theme = useTheme();
   const dispatch = useDispatch();
 
-  const [anchorEl, setAnchorEl,] = useState(null,);
-  const isOpen = Boolean(anchorEl,);
-  const handleOnClick = (event,) => setAnchorEl(event.targetCurrent,);
-  const handleOnClose = () => setAnchorEl(null,);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const isOpen = Boolean(anchorEl);
+  const handleOnClick = (event) => setAnchorEl(event.targetCurrent);
+  const handleOnClose = () => setAnchorEl(null);
 
   return (
     <AppBar sx={{
@@ -27,9 +27,9 @@ function Navbar({ user, isSidebarOpen, setIsSidebarOpen, },) {
       boxShadow: "none",
     }}
     >
-      <Toolbar sx={{ justifyContent: "space-between", }}>
+      <Toolbar sx={{ justifyContent: "space-between" }}>
         <FlexBetween gap="0.5rem">
-          <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen,)}>
+          <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
             <MenuIcon />
           </IconButton>
           <FlexBetween sx={{
@@ -45,14 +45,14 @@ function Navbar({ user, isSidebarOpen, setIsSidebarOpen, },) {
             </IconButton>
           </FlexBetween>
         </FlexBetween>
-        <FlexBetween sx={{ gap: "1.5rem", }}>
-          <IconButton onClick={() => dispatch(setMode(),)}>
+        <FlexBetween sx={{ gap: "1.5rem" }}>
+          <IconButton onClick={() => dispatch(setMode())}>
             {theme.palette.mode === "dark" ? (
-              <LightOutlined sx={{ fontSize: "25px", }} />
-            ) : <DarkModeOutlined sx={{ fontSize: "25px", }} />}
+              <LightOutlined sx={{ fontSize: "25px" }} />
+            ) : <DarkModeOutlined sx={{ fontSize: "25px" }} />}
           </IconButton>
           <IconButton>
-            <SettingsOutlined sx={{ fontSize: "25px", }} />
+            <SettingsOutlined sx={{ fontSize: "25px" }} />
           </IconButton>
           <FlexBetween>
             <Button
@@ -72,19 +72,19 @@ function Navbar({ user, isSidebarOpen, setIsSidebarOpen, },) {
                 width="32px"
                 height="32px"
                 borderRadius="50%"
-                sx={{ objectFit: "cover", }}
+                sx={{ objectFit: "cover" }}
               />
               <Box textAlign="left">
                 <Typography
                   fontWeight="bold"
                   fontSize="0.9rem"
-                  sx={{ color: theme.palette.secondary[100], }}
+                  sx={{ color: theme.palette.secondary[100] }}
                 >
                   {user.name}
                 </Typography>
                 <Typography
                   fontSize="0.8rem"
-                  sx={{ color: theme.palette.secondary[200], }}
+                  sx={{ color: theme.palette.secondary[200] }}
                 >
                   {user.occupation}
                 </Typography>
@@ -100,7 +100,7 @@ function Navbar({ user, isSidebarOpen, setIsSidebarOpen, },) {
               anchorEl={anchorEl}
               open={isOpen}
               onClose={handleOnClose}
-              anchorOrigin={{ vertical: "bottom", horizontal: "center", }}
+              anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
             >
               <MenuItem onClick={handleOnClose}>
                 Logout

@@ -20,7 +20,13 @@
     "rules": {
         "comma-dangle": [
             "error",
-            "always"
+            {
+                "arrays": "never",
+                "objects": "always-multiline",
+                "imports": "always-multiline",
+                "exports": "always-multiline",
+                "functions": "never"
+            }
         ],
         "quotes": [
             "error",

@@ -1,9 +1,9 @@
 /* eslint-disable no-underscore-dangle */
 import React from "react";
-import { Box, useTheme, } from "@mui/material";
-import { DataGrid, } from "@mui/x-data-grid";
+import { Box, useTheme } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 import Header from "../../components/Header";
-import { useGetCustomersQuery, } from "../../state/api";
+import { useGetCustomersQuery } from "../../state/api";
 
 const columns = [
   {
@@ -25,7 +25,7 @@ const columns = [
     field: "phoneNumber",
     headerName: "Phone Number",
     flex: 0.5,
-    renderCell: (params,) => params.value.replace(/^(\d{3})(\d{3})(\d{4})/, "($1) $2-$3",),
+    renderCell: (params) => params.value.replace(/^(\d{3})(\d{3})(\d{4})/, "($1) $2-$3"),
   },
   {
     field: "country",
@@ -36,12 +36,12 @@ const columns = [
     field: "occupation",
     headerName: "Occupation",
     flex: 1,
-  },
+  }
 ];
 
 function Customers() {
   const theme = useTheme();
-  const { data, isLoading, } = useGetCustomersQuery();
+  const { data, isLoading } = useGetCustomersQuery();
 
   return (
     <Box m="1.5rem 2.5rem">
@@ -78,7 +78,7 @@ function Customers() {
         >
           <DataGrid
             loading={!data || isLoading}
-            getRowId={(row,) => row._id}
+            getRowId={(row) => row._id}
             rows={data || []}
             columns={columns}
           />

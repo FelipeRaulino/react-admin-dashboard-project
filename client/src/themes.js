@@ -43,24 +43,24 @@ export const tokensDark = {
 };
 
 // function that reverses the color palette
-function reverseTokens(tokensDark,) {
+function reverseTokens(tokensDark) {
   const reversedTokens = {};
-  Object.entries(tokensDark,).forEach(([key, val,],) => {
-    const keys = Object.keys(val,);
-    const values = Object.values(val,);
-    const { length, } = keys;
+  Object.entries(tokensDark).forEach(([key, val]) => {
+    const keys = Object.keys(val);
+    const values = Object.values(val);
+    const { length } = keys;
     const reversedObj = {};
     for (let i = 0; i < length; i++) {
       reversedObj[keys[i]] = values[length - i - 1];
     }
     reversedTokens[key] = reversedObj;
-  },);
+  });
   return reversedTokens;
 }
-export const tokensLight = reverseTokens(tokensDark,);
+export const tokensLight = reverseTokens(tokensDark);
 
 // mui theme settings
-export const themeSettings = (mode,) => ({
+export const themeSettings = (mode) => ({
   palette: {
     mode,
     ...(mode === "dark"
@@ -107,30 +107,30 @@ export const themeSettings = (mode,) => ({
       }),
   },
   typography: {
-    fontFamily: ["Inter", "sans-serif",].join(",",),
+    fontFamily: ["Inter", "sans-serif"].join(","),
     fontSize: 12,
     h1: {
-      fontFamily: ["Inter", "sans-serif",].join(",",),
+      fontFamily: ["Inter", "sans-serif"].join(","),
       fontSize: 40,
     },
     h2: {
-      fontFamily: ["Inter", "sans-serif",].join(",",),
+      fontFamily: ["Inter", "sans-serif"].join(","),
       fontSize: 32,
     },
     h3: {
-      fontFamily: ["Inter", "sans-serif",].join(",",),
+      fontFamily: ["Inter", "sans-serif"].join(","),
       fontSize: 24,
     },
     h4: {
-      fontFamily: ["Inter", "sans-serif",].join(",",),
+      fontFamily: ["Inter", "sans-serif"].join(","),
       fontSize: 20,
     },
     h5: {
-      fontFamily: ["Inter", "sans-serif",].join(",",),
+      fontFamily: ["Inter", "sans-serif"].join(","),
       fontSize: 16,
     },
     h6: {
-      fontFamily: ["Inter", "sans-serif",].join(",",),
+      fontFamily: ["Inter", "sans-serif"].join(","),
       fontSize: 14,
     },
   },

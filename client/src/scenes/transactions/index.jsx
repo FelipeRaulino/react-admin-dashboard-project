@@ -1,26 +1,26 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useState, } from "react";
-import { Box, useTheme, } from "@mui/material";
-import { DataGrid, } from "@mui/x-data-grid";
+import React, { useState } from "react";
+import { Box, useTheme } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 import DataGridCustomToolbar from "../../components/DataGridCustomToolbar";
-import { useGetTransactionsQuery, } from "../../state/api";
+import { useGetTransactionsQuery } from "../../state/api";
 import Header from "../../components/Header";
 
 function Transactions() {
   const theme = useTheme();
 
-  const [page, setPage,] = useState(0,);
-  const [pageSize, setPageSize,] = useState(20,);
-  const [sort, setSort,] = useState({},);
-  const [search, setSearch,] = useState("",);
-  const [searchInput, setSearchInput,] = useState("",);
+  const [page, setPage] = useState(0);
+  const [pageSize, setPageSize] = useState(20);
+  const [sort, setSort] = useState({});
+  const [search, setSearch] = useState("");
+  const [searchInput, setSearchInput] = useState("");
 
-  const { data, isLoading, } = useGetTransactionsQuery({
+  const { data, isLoading } = useGetTransactionsQuery({
     page,
     pageSize,
-    sort: JSON.stringify(sort,),
+    sort: JSON.stringify(sort),
     search,
-  },);
+  });
 
   const columns = [
     {
@@ -37,8 +37,8 @@ function Transactions() {
       field: "createdAt",
       headerName: "Created At",
       flex: 1,
-      renderCell: (params,) => {
-        const date = new Date(params.value,);
+      renderCell: (params) => {
+        const date = new Date(params.value);
         const dateFortmatted = `${date.getHours()}:${date.getMinutes()}, ${date.toDateString()}`;
         return dateFortmatted;
       },
@@ -48,14 +48,14 @@ function Transactions() {
       headerName: "# of products",
       flex: 0.5,
       sortable: false,
-      renderCell: (params,) => params.value.length,
+      renderCell: (params) => params.value.length,
     },
     {
       field: "cost",
       headerName: "Cost",
       flex: 0.5,
-      renderCell: (params,) => `$${Number(params.value,).toFixed(2,)}`,
-    },
+      renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
+    }
   ];
 
   return (
@@ -94,21 +94,21 @@ function Transactions() {
           loading={isLoading || !data}
           rows={(data && data.transactions) || []}
           rowCount={(data && data.total) || 0}
-          rowsPerPageOptions={[20, 50, 100,]}
-          getRowId={(row,) => row._id}
+          rowsPerPageOptions={[20, 50, 100]}
+          getRowId={(row) => row._id}
           columns={columns}
           pagination
           paginationMode="server"
           page={page}
           pageSize={pageSize}
-          onPageChange={(newPage,) => setPage(newPage,)}
-          onPageSizeChange={(newPageSize,) => setPageSize(newPageSize,)}
+          onPageChange={(newPage) => setPage(newPage)}
+          onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
           sortingMode="server"
-          onSortModelChange={(newSortModel,) => setSort(...newSortModel,)}
+          onSortModelChange={(newSortModel) => setSort(...newSortModel)}
           components={{
             Toolbar: DataGridCustomToolbar,
           }}
-          componentsProps={{ toolbar: { searchInput, setSearchInput, setSearch, }, }}
+          componentsProps={{ toolbar: { searchInput, setSearchInput, setSearch } }}
         />
       </Box>
     </Box>

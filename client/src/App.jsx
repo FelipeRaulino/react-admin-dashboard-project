@@ -1,20 +1,20 @@
-import React, { useMemo, } from "react";
+import React, { useMemo } from "react";
 import {
   BrowserRouter, Navigate, Route, Routes,
 } from "react-router-dom";
-import { CssBaseline, ThemeProvider, } from "@mui/material";
-import { createTheme, } from "@mui/material/styles";
-import { useSelector, } from "react-redux";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+import { useSelector } from "react-redux";
 import Products from "./scenes/products";
 import Dashboard from "./scenes/dashboard";
 import Layout from "./scenes/layout";
 import Customers from "./scenes/customers";
 import Transactions from "./scenes/transactions";
-import { themeSettings, } from "./themes";
+import { themeSettings } from "./themes";
 
 function App() {
-  const mode = useSelector((state,) => state.global.mode,);
-  const theme = useMemo(() => createTheme(themeSettings(mode,),), [mode,],);
+  const mode = useSelector((state) => state.global.mode);
+  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
 
   return (
     <div className="app">

@@ -1,4 +1,4 @@
-import React, { useState, } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -12,13 +12,13 @@ import {
   useTheme,
 } from "@mui/material";
 import Header from "../../components/Header";
-import { useGetProductsQuery, } from "../../state/api";
+import { useGetProductsQuery } from "../../state/api";
 
 function Product({
   id, name, category, price, rating, description, supply, productStats,
-},) {
+}) {
   const theme = useTheme();
-  const [isExpanded, setIsExpanded,] = useState(false,);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <Card
@@ -29,15 +29,15 @@ function Product({
     >
       <CardContent>
         <Typography
-          sx={{ color: theme.palette.secondary[700], fontSize: 14, }}
+          sx={{ color: theme.palette.secondary[700], fontSize: 14 }}
           gutterBottom
         >
           {category}
         </Typography>
         <Typography variant="h5" component="div">{name}</Typography>
-        <Typography sx={{ mb: "1.5rem", color: theme.palette.secondary[400], }}>
+        <Typography sx={{ mb: "1.5rem", color: theme.palette.secondary[400] }}>
           $
-          {Number(price,).toFixed(2,)}
+          {Number(price).toFixed(2)}
         </Typography>
         <Rating value={rating} readOnly />
         <Typography>{description}</Typography>
@@ -46,13 +46,13 @@ function Product({
         <Button
           variant="primary"
           size="small"
-          onClick={() => setIsExpanded(!isExpanded,)}
+          onClick={() => setIsExpanded(!isExpanded)}
         >
           See More
         </Button>
       </CardActions>
       <Collapse in={isExpanded} timeout="auto" unmountOnExit>
-        <CardContent sx={{ color: theme.palette.neutral[500], }}>
+        <CardContent sx={{ color: theme.palette.neutral[500] }}>
           <Typography>
             id:
             {" "}
@@ -80,8 +80,8 @@ function Product({
 }
 
 function Products() {
-  const { data, isLoading, } = useGetProductsQuery();
-  const isNonMobile = useMediaQuery("(min-width: 1000px)",);
+  const { data, isLoading } = useGetProductsQuery();
+  const isNonMobile = useMediaQuery("(min-width: 1000px)");
 
   return (
     <Box m="1.5rem 2.5rem">
@@ -103,7 +103,7 @@ function Products() {
         >
           {data.map(({
             _id, name, category, price, rating, description, supply, productStats,
-          },) => (
+          }) => (
             <Product
               key={_id}
               id={_id}
@@ -115,7 +115,7 @@ function Products() {
               supply={supply}
               productStats={productStats}
             />
-          ),)}
+          ))}
         </Box>
       ) : (
         <>Loading...</>

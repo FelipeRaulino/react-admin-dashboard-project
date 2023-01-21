@@ -1,4 +1,4 @@
-import React, { useEffect, useState, } from "react";
+import React, { useEffect, useState } from "react";
 import {
   SettingsOutlined,
   ChevronLeft,
@@ -28,7 +28,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { useLocation, useNavigate, } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "./FlexBetween";
 import ProfileImage from "../assets/profile.jpeg";
 
@@ -88,7 +88,7 @@ const navItems = [
   {
     text: "Performance",
     icon: <TrendingUpOutlined />,
-  },
+  }
 ];
 
 function Sidebar({
@@ -97,22 +97,22 @@ function Sidebar({
   isNonMobile,
   drawerWidth,
   user,
-},) {
-  const { pathname, } = useLocation();
+}) {
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const theme = useTheme();
-  const [active, setActive,] = useState("",);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
-    setActive(pathname.substring(1,),);
-  }, [pathname,],);
+    setActive(pathname.substring(1));
+  }, [pathname]);
 
   return (
     <Box component="nav">
       {isSidebarOpen && (
         <Drawer
           open={isSidebarOpen}
-          onClose={() => setIsSidebarOpen(false,)}
+          onClose={() => setIsSidebarOpen(false)}
           variant="persistent"
           anchor="left"
           sx={{
@@ -135,17 +135,17 @@ function Sidebar({
                   </Typography>
                 </Box>
                 {!isNonMobile && (
-                  <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen,)}>
+                  <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
                     <ChevronLeft />
                   </IconButton>
                 )}
               </FlexBetween>
             </Box>
             <List>
-              {navItems.map(({ text, icon, },) => {
+              {navItems.map(({ text, icon }) => {
                 if (!icon) {
                   return (
-                    <Typography key={text} sx={{ m: "2.25rem 0 1rem 3rem", }}>
+                    <Typography key={text} sx={{ m: "2.25rem 0 1rem 3rem" }}>
                       {text}
                     </Typography>
                   );
@@ -156,8 +156,8 @@ function Sidebar({
                   <ListItem key={text} disablePadding>
                     <ListItemButton
                       onClick={() => {
-                        navigate(`/${lcText}`,);
-                        setActive(lcText,);
+                        navigate(`/${lcText}`);
+                        setActive(lcText);
                       }}
                       sx={{
                         backgroundColor:
@@ -183,12 +183,12 @@ function Sidebar({
                       </ListItemIcon>
                       <ListItemText primary={text} />
                       {active === lcText && (
-                        <ChevronRightOutlined sx={{ ml: "auto", }} />
+                        <ChevronRightOutlined sx={{ ml: "auto" }} />
                       )}
                     </ListItemButton>
                   </ListItem>
                 );
-              },)}
+              })}
             </List>
           </Box>
 
@@ -197,7 +197,7 @@ function Sidebar({
             <FlexBetween
               textTransform="none"
               gap="1rem"
-              sx={{ margin: "1.5rem 2rem 0 3rem", }}
+              sx={{ margin: "1.5rem 2rem 0 3rem" }}
             >
               <Box
                 component="img"
@@ -206,20 +206,20 @@ function Sidebar({
                 width="40px"
                 height="40px"
                 borderRadius="50%"
-                sx={{ objectFit: "cover", }}
+                sx={{ objectFit: "cover" }}
               />
 
               <Box textAlign="left">
                 <Typography
                   fontWeight="bold"
                   fontSize="0.9rem"
-                  sx={{ color: theme.palette.secondary[100], }}
+                  sx={{ color: theme.palette.secondary[100] }}
                 >
                   {user.name}
                 </Typography>
                 <Typography
                   fontSize="0.8rem"
-                  sx={{ color: theme.palette.secondary[200], }}
+                  sx={{ color: theme.palette.secondary[200] }}
                 >
                   {user.occupation}
                 </Typography>
