@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
+import getCountryIso3 from "country-iso-2-to-3";
 import Product from "../models/Product.js";
 import ProductStat from "../models/ProductStat.js";
 import User from "../models/User.js";
@@ -70,6 +71,30 @@ export const getTransactions = async (req, res) => {
     });
 
     return res.status(200).json({ transactions, total });
+  } catch (error) {
+    console.log(error);
+    return res.status(404).json({ message: error.message });
+  }
+};
+
+export const getGeography = async (req, res) => {
+  try {
+    const users = await User.find();
+
+    const gettingLocations = users.reduce((acc, { country }) => {
+      const countryIso3 = getCountryIso3(country);
+      if (!acc[countryIso3]) {
+        acc[countryIso3] = 0;
+      }
+      acc[countryIso3] += 1;
+      return acc;
+    }, {});
+
+    const formattedLocations = Object.entries(gettingLocations).map(
+      ([country, count]) => ({ id: country, value: count }),
+    );
+
+    return res.status(200).json(formattedLocations);
   } catch (error) {
     console.log(error);
     return res.status(404).json({ message: error.message });
