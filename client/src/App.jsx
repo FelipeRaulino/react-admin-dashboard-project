@@ -5,13 +5,16 @@ import {
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { useSelector } from "react-redux";
-import Products from "./scenes/products";
-import Dashboard from "./scenes/dashboard";
-import Layout from "./scenes/layout";
-import Customers from "./scenes/customers";
-import Transactions from "./scenes/transactions";
-import Geography from "./scenes/geography";
-import Overview from "./scenes/overview";
+import {
+  Products,
+  Dashboard,
+  Layout,
+  Customers,
+  Transactions,
+  Geography,
+  Overview,
+  Daily,
+} from "./scenes/index";
 import { themeSettings } from "./themes";
 
 function App() {
@@ -32,6 +35,7 @@ function App() {
               <Route path="/transactions" element={<Transactions />} />
               <Route path="/geography" element={<Geography />} />
               <Route path="/overview" element={<Overview />} />
+              <Route path="/daily" element={<Daily />} />
             </Route>
           </Routes>
         </ThemeProvider>
