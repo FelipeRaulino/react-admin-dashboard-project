@@ -20,6 +20,8 @@ import generalRoutes from "./routes/general.js";
 // import { dataUser } from "./data/index.js";
 // import Transaction from "./models/Transaction.js";
 // import { dataTransaction } from "./data/index.js";
+// import OverallStat from "./models/OverallStat.js";
+// import { dataOverallStat } from "./data/index.js";
 
 /* CONFIGURATION */
 dotenv.config();
@@ -50,6 +52,7 @@ mongoose.connect(process.env.MONGO_URL, {
   app.listen(PORT, () => console.log(`Server running on PORT: ${PORT}`));
 
   /* Inserting data in MongoDB */
+  // OverallStat.insertMany(dataOverallStat);
   // Product.insertMany(dataProduct);
   // ProductStat.insertMany(dataProductStat);
   // User.insertMany(dataUser);
