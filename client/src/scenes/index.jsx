@@ -6,6 +6,7 @@ import Layout from "./layout";
 import Overview from "./overview";
 import Products from "./products";
 import Transactions from "./transactions";
+import Monthly from "./monthly";
 
 export {
   Customers,
@@ -16,4 +17,5 @@ export {
   Overview,
   Products,
   Transactions,
+  Monthly,
 };
