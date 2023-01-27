@@ -5,6 +5,7 @@ import OverviewChart from "./OverviewChart";
 import DataGridCustomToolbar from "./DataGridCustomToolbar";
 import Sidebar from "./Sidebar";
 import BreakdownChart from "./BreakdownChart";
+import DataGridCustomColumnMenu from "./DataGridCustomColumnMenu";
 
 export {
   FlexBetween,
@@ -14,4 +15,5 @@ export {
   DataGridCustomToolbar,
   Sidebar,
   BreakdownChart,
+  DataGridCustomColumnMenu,
 };

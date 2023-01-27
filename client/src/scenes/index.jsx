@@ -8,6 +8,7 @@ import Products from "./products";
 import Transactions from "./transactions";
 import Monthly from "./monthly";
 import Breakdown from "./breakdown";
+import Admin from "./admin";
 
 export {
   Customers,
@@ -20,4 +21,5 @@ export {
   Transactions,
   Monthly,
   Breakdown,
+  Admin,
 };
