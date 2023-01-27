@@ -15,6 +15,7 @@ import {
   Overview,
   Daily,
   Monthly,
+  Breakdown,
 } from "./scenes/index";
 import { themeSettings } from "./themes";
 
@@ -38,6 +39,7 @@ function App() {
               <Route path="/overview" element={<Overview />} />
               <Route path="/daily" element={<Daily />} />
               <Route path="/monthly" element={<Monthly />} />
+              <Route path="/breakdown" element={<Breakdown />} />
             </Route>
           </Routes>
         </ThemeProvider>
