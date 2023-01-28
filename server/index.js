@@ -22,6 +22,8 @@ import generalRoutes from "./routes/general.js";
 // import { dataTransaction } from "./data/index.js";
 // import OverallStat from "./models/OverallStat.js";
 // import { dataOverallStat } from "./data/index.js";
+// import AffiliateStat from "./models/AffiliateStat.js";
+// import { dataAffiliateStat } from "./data/index.js";
 
 /* CONFIGURATION */
 dotenv.config();
@@ -57,6 +59,7 @@ mongoose.connect(process.env.MONGO_URL, {
   // ProductStat.insertMany(dataProductStat);
   // User.insertMany(dataUser);
   // Transaction.insertMany(dataTransaction);
+  // AffiliateStat.insertMany(dataAffiliateStat);
 }).catch((error) => {
   console.log(error);
 });
