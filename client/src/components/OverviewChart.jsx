@@ -88,6 +88,7 @@ function OverviewChart({ isDashboard = false, view }) {
       margin={{
         top: 20, right: 50, bottom: 50, left: 70,
       }}
+      enableArea={isDashboard}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
