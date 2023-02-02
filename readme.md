@@ -1,7 +1,7 @@
 # React Admin Dashboard Project
 
 ## Sobre o projeto
-Essa aplicação faz parte do [vídeo](https://www.youtube.com/watch?v=0cPCMIuDk2I) no canal do [EdRoh](https://www.youtube.com/@EdRohDev). Trata-se de uma dashboard para administradores possuírem informações sobre o seu negócio. As informações são dispostas através de gráficos, tabelas e componentes com estatísticas.
+Essa aplicação faz parte do [vídeo](https://www.youtube.com/watch?v=0cPCMIuDk2I) no canal do [EdRoh](https://www.youtube.com/@EdRohDev). Trata-se de uma dashboard para administradores possuírem informações sobre o seu negócio. As informações são dispostas através de gráficos, tabelas e componentes com estatísticas. Caso você queira conferir: [Site](https://admin-front-of7a.onrender.com/).
 
 ## Imagens do Projeto
 ### Dashboard
